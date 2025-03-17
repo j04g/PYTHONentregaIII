@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Editar Post{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow-sm">
+    <h2 class="mb-3">Editar Post: {{ post.titulo }}</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success mt-3">Guardar Cambios</button>
+        <a href="{% url 'detalle_post' post.id %}" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

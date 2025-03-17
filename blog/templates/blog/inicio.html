@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Últimos Posts</h2>
+
+{% if posts %}
+    {% for post in posts %}
+    <div class="card mb-3 p-3 shadow-sm">
+        {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" class="img-fluid mb-2" style="max-width: 500px; height: auto;" alt="Imagen de {{ post.titulo }}">
+        {% endif %}
+        <h3><a href="{% url 'detalle_post' post.id %}" class="text-decoration-none">{{ post.titulo }}</a></h3>
+        <p><strong>Autor:</strong> {{ post.autor.nombre }}</p>
+        <p>{{ post.contenido|truncatewords:20 }}</p>
+        <small class="text-muted">Publicado el {{ post.fecha_publicacion }}</small>
+    </div>
+    {% endfor %}
+{% else %}
+    <p class="alert alert-warning">No se encontraron posts para tu búsqueda.</p>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
+

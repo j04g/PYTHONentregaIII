@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Agregar Autor{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow-sm">
+    <h2 class="mb-3">Agregar un nuevo autor</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+    </form>
+</div>
+{% endblock %}

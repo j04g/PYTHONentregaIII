@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}Eliminar Post{% endblock %}
+
+{% block content %}
+<div class="card p-4 shadow-sm">
+    <h2 class="mb-3 text-danger">¿Seguro que quieres eliminar este post?</h2>
+    <p><strong>{{ post.titulo }}</strong></p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'detalle_post' post.id %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
